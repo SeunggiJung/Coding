@@ -26,16 +26,9 @@ int main() {
     int mini = INT32_MAX;
     int left = 1, right = 2;
     while (left < right) {
-        left = right;
+        left = right-1;
         bool flag = true;
-        while (!check(left, right)) {
-            left--;
-            if (left < 0) {
-                flag = false;
-                break;
-            }
-        }
-        if (flag) {
+        if (check(left,right)) {
             mini = min(mini, abs(sums[left][0] - sums[right][0]));
         }
         right++;
