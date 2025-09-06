@@ -23,7 +23,6 @@ void bt(int depth, int ds, vector<pii> route) {
     for (int j = 0; j < route.size(); j++) {
         int x = route[j].first;
         int y = route[j].second;
-        //cout << x << " " << y << "\n";
         for (int i = 0; i < 4; i++) {
             int nr = x + dr[i];
             int nc = y + dc[i];
@@ -37,25 +36,6 @@ void bt(int depth, int ds, vector<pii> route) {
             visited[nr][nc] = false;
         }
     }
-    /*
-    for (auto& p : route) {
-        int x = p.first;
-        int y = p.second; 
-        cout << x << " " << y << "\n";
-        for (int i = 0; i < 4; i++) {
-            int nr = x + dr[i];
-            int nc = y + dc[i];
-            if (nr < 0 || nc < 0 || nr >= 5 || nc >= 5) continue;
-            if (visited[nr][nc]) continue;
-            visited[nr][nc] = true;
-            route.push_back({ nr,nc });
-            if (board[nr][nc] == 'S') bt(depth + 1, ds + 1, route);
-            else bt(depth + 1, ds, route);
-            route.pop_back();
-            visited[nr][nc] = false;
-        }
-    }*/
-    
 }
 int main() {
     ios::sync_with_stdio(false);
