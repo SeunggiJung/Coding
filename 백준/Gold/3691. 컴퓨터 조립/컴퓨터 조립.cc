@@ -41,7 +41,7 @@ int main() {
             cost += m[t].top().first;
             sum = min(sum, m[t].top().second);
             pq.push({ m[t].top().second, m[t].top().first, i});
-            v[i] = m[t].top().second;
+            //v[i] = m[t].top().second;
             m[t].pop();
         }
         while (!pq.empty()) {
