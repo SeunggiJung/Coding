@@ -11,7 +11,6 @@ vector<vector<int>> dp;
 int N, M;
 void func(int from) {
     visited[from] = true;
-    dp[from][1] = 1;
     for (int i = 0; i < link[from].size(); i++) {
         int to = link[from][i];
         if (!visited[to]) {
@@ -27,10 +26,10 @@ int main() {
     cin.tie(nullptr);
     cout.tie(nullptr);
     cin >> N;
-    dp = vector<vector<int>>(N + 1, vector<int>(2, 0)); // 0 : 일반, 1 : 얼리
+    dp = vector<vector<int>>(N + 1, { 0,1 }); // 0 : 일반, 1 : 얼리
     visited = vector<bool>(N + 1, false);
     link = vector<vector<int>>(N + 1);
-    for (int i = 0; i < N-1; i++) {
+    for (int i = 0; i < N - 1; i++) {
         int a, b;
         cin >> a >> b;
         link[a].push_back(b);
