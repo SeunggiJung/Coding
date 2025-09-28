@@ -17,31 +17,26 @@ int main() {
     if (N == 1) {
         cout << 1; return 0;
     }
-    vector<pair<vector<int>, vector<int>>> dp(N);
-    for (int i = 0; i < N; i++) {
-        vector<int> arr;
-        for (int j = 0; j <= i; j++) {
-            int index = lower_bound(arr.begin(), arr.end(), v[j]) - arr.begin();
-            if (index == arr.size()) arr.push_back(v[j]);
-            else arr[index] = v[j];
-        }
-        dp[i].first = arr;
+    vector<pair<pii,pii>> dp(N);
+    vector<int> arr;
+    for (int j = 0; j < N; j++) {
+        int index = lower_bound(arr.begin(), arr.end(), v[j]) - arr.begin();
+        if (index == arr.size()) arr.push_back(v[j]);
+        else arr[index] = v[j];
+        dp[j].first = { arr.size(), arr.back() };
     }
-    
-    for (int i = 0; i < N; i++) {
-        vector<int> arr;
-        for (int j = N-1; j >= i; j--) {
-            int index = lower_bound(arr.begin(), arr.end(), v[j]) - arr.begin();
-            if (index == arr.size()) arr.push_back(v[j]);
-            else arr[index] = v[j];
-        }
-        dp[i].second = arr;
+    arr.clear();
+    for (int j = N-1; j >=0; j--) {
+        int index = lower_bound(arr.begin(), arr.end(), v[j]) - arr.begin();
+        if (index == arr.size()) arr.push_back(v[j]);
+        else arr[index] = v[j];
+        dp[j].second = { arr.size(), arr.back() };
     }
     int maxi = 0;
     
     for (int i = 0; i < N - 1; i++) {
-        int len = dp[i].first.size() + dp[i + 1].second.size();
-        if (dp[i].first.back() == dp[i + 1].second.back()) len--;
+        int len = dp[i].first.first + dp[i + 1].second.first;
+        if (dp[i].first.second == dp[i + 1].second.second) len--;
         maxi = max(maxi, len);
     }
     cout << maxi;
