@@ -18,25 +18,18 @@ int main() {
         q.pop();
         long long int next1 = (long long int)x * 10 + 4;
         long long int next2 = (long long int)x * 10 + 7;
-
-        if (next1 <= N) {
-            q.push(next1);
-        }
-        if (next2 <= N) {
-            q.push(next2);
-        }
+        if(next1 <= N) q.push(x * 10 + 4);
+        if(next2 <= N) q.push(x * 10 + 7);
     }
     sort(fs.begin(), fs.end());
     vector<int> prev(N+1,0);
-    vector<bool> visited(N+1, false);
     q.push(0);
     while (!q.empty()) {
         int n = q.front();
         q.pop();
-        if(n==N) break;
         for(int i : fs){
-            if(i+n>N||visited[i+n]) continue;
-            visited[i+n] = true;
+            if(i+n>N) continue;
+            if(prev[i+n]) continue;
             prev[i+n] = i;
             q.push(i+n);
         }
