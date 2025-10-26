@@ -13,12 +13,6 @@ int find(int x) {
     }
     return parent[x] = find(parent[x]);
 }
-void uni(int a, int b) {
-    a = find(a);
-    b = find(b);
-    if (a < b) parent[b] = a;
-    else parent[a] = b;
-}
 
 int main() {
     ios::sync_with_stdio(false);
@@ -29,13 +23,13 @@ int main() {
     cin>>p>>w>>c>>v;
 
     vector<vector<int>> rodes(w, vector<int>(3));
-    for (int i = 0; i < w; ++i) {
+    for (int i = 0; i < w; i++) {
         cin >> rodes[i][0] >> rodes[i][1] >> rodes[i][2];
     }
     sort(rodes.begin(), rodes.end(), compare);
 
     parent.resize(p);
-    for (int i = 0; i < p; ++i) {
+    for (int i = 0; i < p; i++) {
         parent[i] = i;
     }
     for (auto rode : rodes) {
