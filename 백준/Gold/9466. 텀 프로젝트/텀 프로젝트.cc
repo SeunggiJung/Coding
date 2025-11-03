@@ -9,15 +9,12 @@ int T,N,ans;
 void dfs(int start, int cur){
     visited[cur] = start;
     if(visited[v[cur]] == start){
-        int cnt=0;
         int X = v[cur];
         while(true){
-            cnt++;
-            visited[X] = true;
+            ans--;
             X = v[X];
             if(X==v[cur]) break;
         }
-        ans-=cnt;
         return;
     }
     if(visited[v[cur]]) return;
