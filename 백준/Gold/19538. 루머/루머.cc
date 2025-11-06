@@ -39,11 +39,9 @@ int main() {
             if(trust[next] != -1) continue;
             visited[next]++;
             if(visited[next] >= (m[next].size() + 1)/2){
-                //cout<<cur<<"->"<<next<<" "<<visited[next]<<" "<<m[next].size()<<"!\n";
                 trust[next] = time+1;
                 q.push({next, time+1});
             }
-            //q.push({next, time + 1});
         }
     }
     for(int i=1;i<=N;i++){
