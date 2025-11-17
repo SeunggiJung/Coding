@@ -19,7 +19,7 @@ int main() {
     cout.tie(nullptr);
     cin>>K>>M>>N;
     board.resize(N, vector<int>(M));
-    visited.assign(K+1, vector<vector<int>>(N, vector<int>(M, 40001)));
+    visited.assign(K+1, vector<vector<int>>(N, vector<int>(M, 0)));
     for(int i=0;i<N;i++){
         for(int j=0;j<M;j++){
             cin>>board[i][j];
@@ -41,20 +41,20 @@ int main() {
             int nr = r+dr[i];
             int nc = c+dc[i];
             if(nr<0||nc<0||nr>=N||nc>=M) continue;
-            if(visited[cnt][nr][nc] <= visited[cnt][r][c] + 1) continue;
+            if(visited[cnt][nr][nc]) continue;
             if(board[nr][nc]) continue;
             q.push({nr,nc,cnt});
-            visited[cnt][nr][nc] = min(visited[cnt][nr][nc], visited[cnt][r][c] + 1);
+            visited[cnt][nr][nc] = visited[cnt][r][c] + 1;
         }
         if(cnt>=K) continue;
         for(int i=0;i<8;i++){
             int nr = r+hr[i];
             int nc = c+hc[i];
             if(nr<0||nc<0||nr>=N||nc>=M) continue;
-            if(visited[cnt+1][nr][nc]<=visited[cnt][r][c]+1) continue;
+            if(visited[cnt+1][nr][nc]) continue;
             if(board[nr][nc]) continue;
             q.push({nr, nc, cnt+1});
-            visited[cnt+1][nr][nc] = min(visited[cnt+1][nr][nc], visited[cnt][r][c] + 1);
+            visited[cnt+1][nr][nc] = visited[cnt][r][c] + 1;
         }
     }
     cout<<-1;
