@@ -33,6 +33,7 @@ int main() {
         for(int j=0;j<N;j++){
             int n = v[i][0] + v[j][1];
             int li = lower_bound(v2.begin(), v2.end(), -n)-v2.begin();
+            if(li==v2.end()-v2.begin()) continue;
             int ui = upper_bound(v2.begin(), v2.end(), -n)-v2.begin();
             cnt+=(ui-li);
         }
