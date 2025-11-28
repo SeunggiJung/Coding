@@ -26,11 +26,11 @@ int main() {
     int left=1, right=1;
     int mini = INT_MAX;
     while(left<=right){
-        int sum = sums[right] - sums[left] + v[left];
+        int sum = sums[right] - sums[left-1];
         if(sum>=S){
             while(left<right){
                 left++;
-                int nsum = sums[right] - sums[left] + v[left];
+                int nsum = sums[right] - sums[left-1];
                 if(nsum<S){left--;break;}
             }
             mini = min(mini, right-left+1);
