@@ -28,15 +28,14 @@ int main() {
         }
     }
     visited[jihoon.first][jihoon.second] = 1;
-    q.push({jihoon.first, jihoon.second, 0});
     for(pii x : fire) q.push({x.first, x.second, 1});
+    q.push({jihoon.first, jihoon.second, 0});
     while(!q.empty()){
         int r = q.front()[0];
         int c = q.front()[1];
         char who = q.front()[2]==0 ? 'J' : 'F';
         q.pop();
         if(who=='J'){
-            if(board[r][c]=='F') continue;
             for(int i=0;i<4;i++){
                 int nr = r + dr[i];
                 int nc = c + dc[i];
