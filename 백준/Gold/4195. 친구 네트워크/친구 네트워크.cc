@@ -7,9 +7,9 @@ using namespace std;
 typedef pair<int,int> pii;
 int N, T;
 map<string, pair<string, int>> parent;
-pair<string ,int> find(string child){
-    if(parent[child].first==child) return parent[child];
-    return parent[child] = find(parent[child].first);
+string find(string child){
+    if(parent[child].first==child) return parent[child].first;
+    return parent[child].first = find(parent[child].first);
 }
 int main() {
     ios::sync_with_stdio(false);
@@ -29,20 +29,20 @@ int main() {
                 parent[B] = {B, 1};
             }
             string tmp;
-            parent[A] = find(parent[A].first);
-            parent[B] = find(parent[B].first);
-            if(parent[A].first==parent[B].first){
-                cout<<parent[A].second<<"\n";
+            string pA = find(parent[A].first);
+            string pB = find(parent[B].first);
+            if(pA==pB){
+                cout<<parent[pA].second<<"\n";
                 continue;
             }
-            cout<<parent[A].second + parent[B].second<<"\n";
-            if(parent[A].first < parent[B].first){
-                parent[parent[A].first].second += parent[B].second;
-                parent[parent[B].first] = parent[parent[A].first];
+            cout<<parent[pA].second + parent[pB].second<<"\n";
+            if(parent[pA].first < parent[pB].first){
+                parent[pA].second += parent[pB].second;
+                parent[pB] = parent[pA];
             }
             else{
-                parent[parent[B].first].second += parent[A].second;
-                parent[parent[A].first] = parent[parent[B].first];
+                parent[pB].second += parent[pA].second;
+                parent[pA] = parent[pB];
             }
         }
     }
