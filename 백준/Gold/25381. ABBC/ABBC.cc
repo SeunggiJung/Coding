@@ -14,43 +14,28 @@ int main() {
     cout.tie(nullptr);
     string in;
     cin>>in;
-    queue<int> A;
-    queue<int> B;
-    queue<int> C;
-    for(int i=0;i<in.length();i++){
-        if(in[i]=='A') A.push(i);
-        if(in[i]=='B') B.push(i);
-        if(in[i]=='C') C.push(i);
-    }
-    if(B.empty()){
-        cout<<0;
-        return 0;
-    }
+    queue<int> q;
     int cnt=0;
-    int Blen = B.size();
-    int popcnt=0;
-    while(!C.empty()){
-        int c = C.front();
-        C.pop();
-        if(popcnt>=Blen) break;
-        int b = B.front();
-        B.pop();
-        popcnt++;
-        if(b<c){
-            cnt++;
+    for(int i=0;i<in.length();i++){
+        if(in[i] == 'B'){
+            q.push(i);
             continue;
         }
-        B.push(b);
+        if(in[i]=='C'){
+            if(q.empty()) continue;
+            q.pop();
+            cnt++;
+        }
     }
-    while(!A.empty()){
-        int a = A.front();
-        A.pop();
-        while(!B.empty()){
-            int b = B.front();
-            B.pop();
-            if(a<b){
-                cnt++;
-                break;
+    for(int i=0;i<in.length();i++){
+        if(in[i]=='A'){
+            while(!q.empty()){
+                int b = q.front();
+                q.pop();
+                if(i<b){
+                    cnt++;
+                    break;
+                }
             }
         }
     }
