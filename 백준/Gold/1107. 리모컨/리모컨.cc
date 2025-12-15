@@ -45,7 +45,7 @@ int main() {
             break;
         }
     }
-    for(int i=N;i<=1000000;i++){
+    for(int i=N;i<N+499894;i++){
         int x = i;
         bool flag=true;
         int cnt = 0;
