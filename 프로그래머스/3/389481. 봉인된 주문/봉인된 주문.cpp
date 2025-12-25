@@ -28,10 +28,6 @@ string who(long long n){
         res.push_back('a'+ q - 1);
         n -= div*q;
         div/=26;
-        if(div && n/div==0){
-            res.back()-=1;
-            n+=div*26;
-        }
     }
 
     return res;
