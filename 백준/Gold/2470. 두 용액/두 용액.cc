@@ -18,11 +18,11 @@ int main() {
         cin>>v[i];
     }
     sort(v.begin(), v.end());
-    vector<long long> ans = {LLONG_MAX, 0, 0};
+    vector<int> ans = {INT_MAX, 0, 0};
     int start = 0;
     int end = N-1;
     while(start<end){
-        long long sum = v[start] + v[end];
+        int sum = v[start] + v[end];
         if(abs(sum) < ans[0]){
             ans = {abs(sum), v[start], v[end]};
         }
