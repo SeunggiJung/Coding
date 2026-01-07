@@ -1,13 +1,6 @@
 #include <iostream>
-#include <bits/stdc++.h>
 #include <vector>
-#include <algorithm>
 #include <queue>
-#include <string>
-#include <sstream>
-#include <map>
-#include <math.h>
-#include <set>
 using namespace std;
 typedef pair<int,int> pii;
 vector<vector<int>> board;
@@ -63,12 +56,8 @@ int main() {
     int time = 0;
     while(true){
         int sec = sector();
-        if(!sec){
-            cout<<0;
-            break;
-        }
-        if(sec>1){
-            cout<<time;
+        if(sec!=1){
+            cout<<(sec>1 ? time : 0);
             break;
         }
         vector<vector<int>> tmp = board;
