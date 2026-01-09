@@ -1,13 +1,6 @@
 #include <iostream>
 #include <bits/stdc++.h>
 #include <vector>
-#include <algorithm>
-#include <queue>
-#include <string>
-#include <sstream>
-#include <map>
-#include <math.h>
-#include <set>
 using namespace std;
 typedef pair<int,int> pii;
 int N, M;
@@ -18,12 +11,12 @@ int main() {
     cin>>N>>M;
     long long ans = 0;
     vector<int> num(N+1);
-    vector<long long> sum(N+1, 0);
     vector<int> div(M,0);
+    int bef = 0;
     for(int i=1;i<=N;i++){
         cin>>num[i];
-        sum[i] = sum[i-1] + num[i];
-        int d = sum[i] % M;
+        bef = (bef + num[i])%M;
+        int d = bef;
         if(!d) ans++;
         ans += div[d];
         div[d]++;
