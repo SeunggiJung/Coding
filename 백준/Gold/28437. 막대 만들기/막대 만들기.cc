@@ -22,9 +22,9 @@ int main() {
         method[stick[i]]++;
     }
     for(int i=1;i<=100000;i++){
-        if(method[i] == 0) continue;
-        for(int j=2*i;j<=100000;j+=i){
-            method[j] += method[i];
+        if(!method[i]) continue;
+        for(int j=2;i*j<=100000;j++){
+            method[i*j] += method[i];
         }
     }
     cin>>M;
@@ -33,4 +33,5 @@ int main() {
         cin>>num[i];
         cout<<method[num[i]]<<" ";
     }
+
 }
