@@ -33,7 +33,10 @@ int main() {
         int c = q.front()[1];
         int b = q.front()[2];
         q.pop();
-        if(r==en.first && c==en.second) break;
+        if(r==en.first && c==en.second){
+            cout<<visited[r][c][b];
+            exit(0);
+        }
         for(int i=0;i<4;i++){
             int nr = r + dr[i];
             int nc = c + dc[i];
@@ -51,9 +54,5 @@ int main() {
             }
         }
     }
-    int res = N*M+1;
-    if(visited[en.first][en.second][0]) res = min(res, visited[en.first][en.second][0]);
-    if(visited[en.first][en.second][1]) res = min(res, visited[en.first][en.second][1]);
-    if(res == N*M+1) cout<<-1;
-    else cout<<res;
+    cout<<-1;
 }
