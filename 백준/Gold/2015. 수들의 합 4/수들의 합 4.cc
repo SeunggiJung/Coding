@@ -11,7 +11,7 @@ typedef long long int lli;
 typedef pair<int, int> pii;
 static int N, M, K;
 vector<int> v;
-map<int, lli> m;
+map<lli, lli> m;
 struct compare {
     bool operator()(const pair<int, int>& a, const pair<int, int>& b) {
         return a.second > b.second;
@@ -22,7 +22,7 @@ int main() {
     cin.tie(nullptr);
     cout.tie(nullptr);
     cin >> N >> M;
-    vector<int> sum(N + 1, 0);
+    vector<lli> sum(N + 1, 0);
     v.resize(N + 1);
     for (int i = 1; i <= N; i++) {
         cin >> v[i];
@@ -31,9 +31,8 @@ int main() {
     m[sum[0]] = 1;
     lli cnt = 0;
     for (int i = 1; i <= N; i++) {
-        if (m.count(sum[i] - M)) {
-            cnt += m[sum[i] - M];
-        }
+        if (m[sum[i] - M]) cnt+=m[sum[i]-M];
+        if (!m[sum[i]]) m[sum[i]] = 0;
         m[sum[i]]++;
     }
     cout << cnt;
