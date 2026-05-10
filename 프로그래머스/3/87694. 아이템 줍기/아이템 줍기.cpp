@@ -40,7 +40,7 @@ int solution(vector<vector<int>> rectangle, int characterX, int characterY, int 
         int x = q.front().first;
         int y = q.front().second;
         q.pop();
-        if (x == itemX * 2 && y == itemY * 2) return (cnt[x][y] - 1) / 2;
+        if (x == itemX * 2 && y == itemY * 2) return (cnt[x][y]) / 2;
         for (int i = 0; i < 4; i++) {
             int nx = x + dr[i];
             int ny = y + dc[i];
