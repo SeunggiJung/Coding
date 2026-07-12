@@ -12,9 +12,7 @@ vector<vector<int>> check;
 vector<pair<int, pii>> connect;
 
 int find(int a, vector<int>& parent) {
-    if (a == parent[a]) {
-        return a;
-    }
+    if (a == parent[a]) return a;
     return parent[a] = find(parent[a], parent);
 }
 
